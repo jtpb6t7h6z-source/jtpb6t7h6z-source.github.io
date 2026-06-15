@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graham Hunter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    .hero-section {
+      background: linear-gradient(rgba(10, 30, 60, 0.55), rgba(10, 30, 60, 0.70)),
+                  url('https://images.unsplash.com/photo-1551524559-8af4e6624178?w=1600&auto=format&fit=crop') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+    }
+    .hero-section h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: 0.03em; }
+    .hero-section p.lead { font-size: 1.35rem; opacity: 0.9; }
+    .navbar-brand { font-weight: 700; font-size: 1.2rem; }
+    #about { padding: 80px 0; }
+    .about-img { width: 100%; max-width: 420px; border-radius: 8px; object-fit: cover; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    #highlights { background-color: #f4f7fb; padding: 70px 0; }
+    .highlight-card { border: none; border-radius: 10px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); transition: transform 0.2s; }
+    .highlight-card:hover { transform: translateY(-4px); }
+    .highlight-icon { font-size: 2.4rem; color: #2c5f9e; }
+    footer { background-color: #0d1e3c; color: #c8d8ea; padding: 36px 0; }
+    footer a { color: #8ab4d6; text-decoration: none; }
+    footer a:hover { color: #ffffff; }
+    .social-icons a { font-size: 1.5rem; margin: 0 10px; color: #8ab4d6; }
+    .social-icons a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Graham Hunter</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="resume.html">Résumé</a></li>
+        <li class="nav-item"><a class="nav-link" href="scratch.html">Ski Passion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<section class="hero-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <p class="text-uppercase mb-2" style="letter-spacing:0.15em; color:#8ab4d6; font-weight:600;"><i class="bi bi-snow me-1"></i> Skier &nbsp;·&nbsp; Student &nbsp;·&nbsp; Marketer</p>
+        <h1 class="display-3 fw-bold mb-3">Graham Hunter</h1>
+        <p class="lead mb-4">Business student at the University of Colorado Boulder, passionate about the mountains, outdoor sports marketing, and spending every possible weekend chasing powder days.</p>
+        <a href="resume.html" class="btn btn-primary btn-lg me-3">View Résumé</a>
+        <a href="scratch.html" class="btn btn-outline-light btn-lg">My Ski Passion</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 text-center">
+        <img src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600&auto=format&fit=crop" alt="Skier on a mountain slope" class="about-img" />
+      </div>
+      <div class="col-lg-7">
+        <h2 class="mb-4">About Me</h2>
+        <p>I'm a senior studying Business Administration with a concentration in Marketing at the University of Colorado Boulder. Growing up in Colorado, skiing is more than a hobby — it's a way of life. From groomed resort runs to backcountry powder fields, the mountains have shaped who I am.</p>
+        <p>I've spent two winters as a certified ski instructor at Vail, where I taught guests of all skill levels and developed a deep appreciation for how great coaching transforms people's relationships with the sport. Outside the slopes, I channel that passion into marketing work for outdoor brands.</p>
+        <p>When I'm not on skis, you'll find me working on data analytics projects, running with my dog, or planning the next expedition.</p>
+        <div class="row mt-4 g-3 text-center">
+          <div class="col-4"><h3 class="fw-bold text-primary">8+</h3><p class="text-muted small mb-0">Years Skiing</p></div>
+          <div class="col-4"><h3 class="fw-bold text-primary">20+</h3><p class="text-muted small mb-0">Resorts Visited</p></div>
+          <div class="col-4"><h3 class="fw-bold text-primary">PSIA L1</h3><p class="text-muted small mb-0">Certified Instructor</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="highlights">
+  <div class="container">
+    <h2 class="text-center mb-5">What I Bring</h2>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="card highlight-card p-4 text-center h-100"><div class="highlight-icon mb-3"><i class="bi bi-megaphone-fill"></i></div><h5 class="fw-semibold mb-2">Marketing Strategy</h5><p class="text-muted mb-0">Experience crafting digital campaigns for outdoor and lifestyle brands. Strong background in social media, content creation, and campaign analytics.</p></div></div>
+      <div class="col-md-4"><div class="card highlight-card p-4 text-center h-100"><div class="highlight-icon mb-3"><i class="bi bi-bar-chart-fill"></i></div><h5 class="fw-semibold mb-2">Data &amp; Analytics</h5><p class="text-muted mb-0">Comfortable with Python, Excel, and Tableau for market analysis and consumer insights. Turned data into actionable recommendations during a summer internship at an outdoor tech company.</p></div></div>
+      <div class="col-md-4"><div class="card highlight-card p-4 text-center h-100"><div class="highlight-icon mb-3"><i class="bi bi-people-fill"></i></div><h5 class="fw-semibold mb-2">Teaching &amp; Leadership</h5><p class="text-muted mb-0">Led group ski lessons for guests ranging from first-timers to aspiring racers. President of the CU Ski Club, coordinating resort trips and community events for 200+ members.</p></div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container text-center">
+    <div class="social-icons mb-3">
+      <a href="https://github.com/jtpb6t7h6z-source" title="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/graham-hunter" title="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.instagram.com" title="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+    </div>
+    <p class="mb-1">&copy; 2026 Graham Hunter &nbsp;|&nbsp; <a href="resume.html">Résumé</a> &nbsp;|&nbsp; <a href="scratch.html">Ski Passion</a></p>
+    <p class="small" style="opacity:0.5;">University of Colorado Boulder &nbsp;·&nbsp; Business Administration &nbsp;·&nbsp; Class of 2026</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
