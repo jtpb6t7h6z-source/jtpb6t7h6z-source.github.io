@@ -149,7 +149,7 @@ p {
 }
 
 /* ---- 9. Favorites list section div ---- */
-#resort-lists {
+#teams-list {
   background-color: rgba(30, 15, 5, 0.5);
   border: 1px solid #3a1e0a;
   border-radius: 8px;
@@ -158,12 +158,12 @@ p {
 }
 
 /* Ordered list (top teams) */
-#resort-lists ol {
+#teams-list ol {
   padding-left: 1.4em;
   color: #e0d8d0;
 }
 
-#resort-lists ol > li {
+#teams-list ol > li {
   font-weight: 600;
   font-size: 1.05rem;
   color: #e09050;
@@ -172,13 +172,13 @@ p {
 }
 
 /* Nested unordered list (players at each team) */
-#resort-lists ol > li > ul {
+#teams-list ol > li > ul {
   list-style: disc;
   padding-left: 1.4em;
   margin-top: 6px;
 }
 
-#resort-lists ol > li > ul li {
+#teams-list ol > li > ul li {
   font-weight: 400;
   font-size: 0.92rem;
   color: #c0a880;
@@ -186,7 +186,7 @@ p {
 }
 
 /* ---- 10. Image styling ---- */
-.ski-image {
+.page-image {
   width: 100%;
   max-height: 420px;
   object-fit: cover;
