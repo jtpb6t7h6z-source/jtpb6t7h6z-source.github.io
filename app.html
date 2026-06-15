@@ -3,139 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pick Your Line 🎿 — Ski Run Simulator</title>
+  <title>Final 30 Seconds 🏀 — Basketball Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
-
+    /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg-dark:    #07111f;
-      --bg-mid:     #0e1e33;
-      --bg-card:    #132035;
-      --border:     #1e3a5f;
-      --blue-main:  #2c5f9e;
-      --blue-light: #5b9bd5;
-      --blue-pale:  #8ab4d6;
-      --text-main:  #d8e8f5;
-      --text-dim:   #8aafc9;
-      --white:      #ffffff;
-      --green:      #2ecc71;
-      --red:        #e74c3c;
-      --yellow:     #f39c12;
-      --btn-radius: 6px;
-    }
-
     body {
-      background-color: var(--bg-dark);
       font-family: 'Inter', sans-serif;
-      color: var(--text-main);
+      background-color: #0f0a05;
+      background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(150, 70, 10, 0.20) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 100%, rgba(100, 45, 5, 0.16) 0%, transparent 55%);
+      color: #e0d0c0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    #topbar {
-      background-color: rgba(7, 17, 31, 0.95);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      height: 52px;
+    /* ===== HEADER ===== */
+    header {
+      background-color: rgba(15, 10, 5, 0.95);
+      border-bottom: 1px solid #3a1e0a;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    #topbar .logo {
+    header .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--white);
+      font-size: 1.2rem;
+      color: #ffffff;
       text-decoration: none;
     }
-    #topbar a.back-link {
-      color: var(--blue-pale);
-      font-size: 0.85rem;
+    header nav a {
+      color: #c09060;
       text-decoration: none;
+      font-size: 0.88rem;
+      margin-left: 20px;
+      transition: color 0.2s;
     }
-    #topbar a.back-link:hover { color: var(--white); }
+    header nav a:hover { color: #ffffff; }
 
-    #game-wrap {
+    /* ===== MAIN GAME AREA ===== */
+    main {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 40px 16px;
+      justify-content: flex-start;
+      padding: 40px 20px 60px;
     }
 
-    #game-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      max-width: 680px;
-      width: 100%;
-      padding: 40px 44px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #a09070;
+      text-align: center;
+      margin-bottom: 32px;
     }
 
+    /* ===== STATUS BAR ===== */
     #status-bar {
       display: flex;
-      gap: 20px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-    }
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: var(--bg-mid);
-      border: 1px solid var(--border);
+      gap: 24px;
+      background: rgba(30, 15, 5, 0.7);
+      border: 1px solid #3a1e0a;
       border-radius: 8px;
-      padding: 10px 16px;
-      flex: 1;
-      min-width: 80px;
-    }
-    .stat-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 4px;
-    }
-    .stat-value {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .stat-value.good  { color: var(--green); }
-    .stat-value.warn  { color: var(--yellow); }
-    .stat-value.bad   { color: var(--red); }
-
-    #scene-art {
-      font-size: 3.5rem;
-      text-align: center;
-      margin-bottom: 20px;
-      line-height: 1;
-      user-select: none;
-    }
-
-    #scene-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-      text-align: center;
-    }
-
-    #scene-desc {
-      font-size: 0.97rem;
-      line-height: 1.7;
-      color: var(--text-main);
+      padding: 14px 28px;
       margin-bottom: 28px;
-      text-align: center;
-      min-height: 80px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .stat-label { font-size: 0.72rem; color: #806040; text-transform: uppercase; letter-spacing: 0.08em; }
+    .stat-value { font-size: 1.1rem; color: #e09050; }
+
+    /* ===== PROGRESS TRACK ===== */
+    #progress-track {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .progress-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #3a1e0a;
+      border: 1px solid #5a3010;
+      transition: background-color 0.3s;
+    }
+    .progress-dot.active { background-color: #c85a00; }
+    .progress-dot.done { background-color: #604030; }
+
+    /* ===== SCENE CARD ===== */
+    #scene-card {
+      background: rgba(25, 12, 4, 0.8);
+      border: 1px solid #3a1e0a;
+      border-radius: 12px;
+      padding: 36px 40px;
+      max-width: 680px;
+      width: 100%;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
     }
 
+    #scene-icon {
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    #scene-text {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: #d8c8b8;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* ===== CHOICES ===== */
     #choices {
       display: flex;
       flex-direction: column;
@@ -143,432 +141,347 @@
     }
 
     .choice-btn {
-      background-color: var(--bg-mid);
-      border: 1px solid var(--border);
-      border-radius: var(--btn-radius);
-      color: var(--text-main);
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
+      background: rgba(40, 20, 5, 0.6);
+      border: 1px solid #5a2e0a;
+      border-radius: 8px;
+      color: #e0c8a0;
       font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
       font-weight: 500;
       padding: 14px 20px;
       text-align: left;
-      transition: background-color 0.18s, border-color 0.18s, transform 0.1s;
-      width: 100%;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.4;
     }
     .choice-btn:hover {
-      background-color: rgba(44, 95, 158, 0.3);
-      border-color: var(--blue-main);
-      transform: translateX(3px);
+      background: rgba(200, 90, 0, 0.15);
+      border-color: #c85a00;
+      color: #ffffff;
     }
-    .choice-btn:active { transform: translateX(1px); }
     .choice-btn .choice-label {
       display: inline-block;
-      background-color: var(--blue-main);
-      color: var(--white);
+      background: #c85a00;
+      color: #fff;
       font-size: 0.72rem;
       font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
       border-radius: 3px;
-      padding: 2px 7px;
       margin-right: 10px;
       vertical-align: middle;
     }
 
+    /* ===== OUTCOME BOX ===== */
     #outcome-box {
       display: none;
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      background: rgba(25, 12, 4, 0.8);
+      border: 1px solid #3a1e0a;
+      border-radius: 12px;
+      padding: 36px 40px;
+      max-width: 680px;
+      width: 100%;
       text-align: center;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
     }
-    #outcome-box.win  { background-color: rgba(46, 204, 113, 0.15); border: 1px solid var(--green); color: #a8f0c0; }
-    #outcome-box.loss { background-color: rgba(231, 76, 60, 0.15);  border: 1px solid var(--red);   color: #f0a8a8; }
-    #outcome-box.info { background-color: rgba(44, 95, 158, 0.15);  border: 1px solid var(--blue-main); color: var(--blue-pale); }
+    #outcome-box.win { border-color: #4a8a20; }
+    #outcome-box.loss { border-color: #8a2020; }
 
-    #end-actions {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      margin-top: 20px;
-    }
-    #final-score {
+    #outcome-icon { font-size: 3rem; margin-bottom: 14px; }
+    #outcome-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: var(--white);
-      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
     }
-    #restart-btn {
-      background-color: var(--blue-main);
-      border: none;
-      border-radius: var(--btn-radius);
-      color: var(--white);
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 14px 36px;
-      transition: background-color 0.18s;
-    }
-    #restart-btn:hover { background-color: #1a4a7a; }
+    #outcome-box.win #outcome-title { color: #80c840; }
+    #outcome-box.loss #outcome-title { color: #c84040; }
+    #outcome-desc { font-size: 1rem; color: #b0a090; line-height: 1.6; margin-bottom: 24px; }
 
-    #progress-track {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
+    #final-score {
+      font-size: 0.88rem;
+      color: #806040;
       margin-bottom: 24px;
     }
-    .track-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: var(--border);
-      transition: background-color 0.3s;
-    }
-    .track-dot.done  { background-color: var(--blue-light); }
-    .track-dot.curr  { background-color: var(--white); }
-    .track-dot.good-end { background-color: var(--green); }
-    .track-dot.bad-end  { background-color: var(--red); }
+    #final-score span { color: #e09050; font-weight: 700; }
 
-    #app-footer {
-      text-align: center;
-      padding: 18px;
-      font-size: 0.8rem;
-      color: #3a5a74;
-      border-top: 1px solid var(--border);
+    #restart-btn {
+      background-color: #c85a00;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 32px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
-    #app-footer a { color: #5a8cbf; text-decoration: none; }
-    #app-footer a:hover { color: var(--white); }
+    #restart-btn:hover { background-color: #9a3a00; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: rgba(5, 3, 1, 0.9);
+      border-top: 1px solid #3a1e0a;
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 0.82rem;
+      color: #504030;
+    }
   </style>
 </head>
 <body>
 
-<div id="topbar">
-  <a href="scratch.html" class="logo">🎿 Pick Your Line</a>
-  <a href="scratch.html" class="back-link">← Back to Ski Passion</a>
-</div>
+<!-- ===== HEADER ===== -->
+<header>
+  <a href="index.html" class="logo">Graham Hunter</a>
+  <nav>
+    <a href="scratch.html">← Basketball Page</a>
+    <a href="index.html">Pro Site</a>
+  </nav>
+</header>
 
-<div id="game-wrap">
-  <div id="game-card">
+<!-- ===== MAIN ===== -->
+<main>
+  <h1>Final 30 Seconds 🏀</h1>
+  <p class="subtitle">Down by 2. Half court. 30 seconds left. What do you do?</p>
 
-    <div id="status-bar">
-      <div class="stat-item">
-        <span class="stat-label">Speed</span>
-        <span class="stat-value" id="stat-speed">—</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">Confidence</span>
-        <span class="stat-value" id="stat-conf">—</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">Snow</span>
-        <span class="stat-value" id="stat-snow">—</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">Score</span>
-        <span class="stat-value" id="stat-score">0</span>
-      </div>
-    </div>
-
-    <div id="progress-track"></div>
-    <div id="outcome-box"></div>
-    <div id="scene-art">⛷️</div>
-    <div id="scene-title">Pick Your Line</div>
-    <div id="scene-desc">Loading your run...</div>
-    <div id="choices"></div>
-
-    <div id="end-actions">
-      <div id="final-score"></div>
-      <button id="restart-btn">🔄 Try Again</button>
-    </div>
-
+  <!-- Status bar -->
+  <div id="status-bar">
+    <div class="stat"><span class="stat-label">Score</span><span class="stat-value" id="stat-score">0 pts</span></div>
+    <div class="stat"><span class="stat-label">Confidence</span><span class="stat-value" id="stat-conf">50%</span></div>
+    <div class="stat"><span class="stat-label">Clock</span><span class="stat-value" id="stat-clock">:30</span></div>
+    <div class="stat"><span class="stat-label">Situation</span><span class="stat-value" id="stat-diff">Down 2</span></div>
   </div>
-</div>
 
-<div id="app-footer">
-  A web app built for a skiing website project &nbsp;|&nbsp;
-  <a href="scratch.html">← Ski Passion Page</a> &nbsp;|&nbsp;
-  <a href="index.html">Professional Site</a>
-</div>
+  <!-- Progress dots -->
+  <div id="progress-track">
+    <div class="progress-dot" id="dot-0"></div>
+    <div class="progress-dot" id="dot-1"></div>
+    <div class="progress-dot" id="dot-2"></div>
+    <div class="progress-dot" id="dot-3"></div>
+    <div class="progress-dot" id="dot-4"></div>
+  </div>
 
+  <!-- Scene card -->
+  <div id="scene-card">
+    <div id="scene-icon"></div>
+    <p id="scene-text"></p>
+    <div id="choices"></div>
+  </div>
+
+  <!-- Outcome box -->
+  <div id="outcome-box">
+    <div id="outcome-icon"></div>
+    <div id="outcome-title"></div>
+    <p id="outcome-desc"></p>
+    <p id="final-score"></p>
+    <button id="restart-btn" onclick="startGame()">Play Again</button>
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  &copy; 2026 Graham Hunter &nbsp;·&nbsp; Final 30 Seconds Basketball Simulator
+</footer>
+
+<!-- ===== GAME LOGIC ===== -->
 <script>
-  const state = {
-    sceneIndex: 0,
-    score: 0,
-    speed: 'Slow',
-    confidence: 'Nervous',
-    snow: 'Groomed',
-    history: [],
-    gameOver: false
-  };
-
-  const scenes = {
+  /* ── Scene graph ── */
+  const SCENES = {
     start: {
-      art: '🏔️⛷️',
-      title: "Top of the Mountain",
-      desc: "You're standing at the top of an unfamiliar run at 12,000 feet. The chairlift hums behind you. A dusting of fresh snow fell last night. Two trails fork before you: a wide-open blue groomer to the left, and a narrow, steep black diamond disappearing into trees on the right. Your heart is pounding. What do you do?",
-      speedSet: 'Slow', confSet: 'Nervous', snowSet: 'Powder',
+      icon: '🏀',
+      text: "You catch the inbound pass at half court. Clock shows :30. Your team is down by 2 — you need at least a tie. The defense hasn't set yet.",
       choices: [
-        { label: 'Take the blue groomer — warm up first', next: 'groomer_start', points: 5 },
-        { label: 'Drop into the black diamond — you only live once', next: 'black_start', points: 10 }
+        { label: 'A', text: 'Push pace — attack before the defense can set up', next: 'push_pace', clock: 22, conf: +10 },
+        { label: 'B', text: 'Call timeout — let your coach draw something up', next: 'timeout', clock: 20, conf: +5 },
+        { label: 'C', text: 'Slow it down — get into the half court', next: 'halfcourt', clock: 18, conf: 0 },
       ]
     },
-    groomer_start: {
-      art: '🎿✨',
-      title: "Smooth Groomed Snow",
-      desc: "The corduroy is pristine. Your edges grip perfectly and you start carving big confident arcs. Speed builds naturally. A mogul field appears halfway down — you can either punch straight through for a challenge, or detour around on a smooth cat track to keep your run clean.",
-      speedSet: 'Medium', confSet: 'Confident', snowSet: 'Groomed',
+
+    push_pace: {
+      icon: '⚡',
+      text: "You're flying down the court. Two defenders scramble back. You hit the paint and see your options open up fast.",
       choices: [
-        { label: 'Hit the moguls — let\'s see what you\'ve got', next: 'moguls', points: 10 },
-        { label: 'Take the cat track — smooth and steady', next: 'cat_track', points: 5 }
+        { label: 'A', text: 'Finish at the rim — draw contact, get to the line', next: 'finish_rim', clock: 16, conf: +15, score: +2 },
+        { label: 'B', text: 'Kick out to the open corner shooter', next: 'kick_corner', clock: 14, conf: +5 },
+        { label: 'C', text: 'Pull up for the mid-range off the glass', next: 'midrange_fast', clock: 15, conf: +5, score: +2 },
       ]
     },
-    black_start: {
-      art: '😰🌲',
-      title: "Into the Trees",
-      desc: "You drop off the cornice edge and immediately your speed doubles. The trees are close, the snow is chopped. You need to scrub speed FAST. You can either slam on the brakes with a hockey stop (risky on variable snow), or try to find a rhythm through the natural terrain features.",
-      speedSet: 'Fast', confSet: 'Nervous', snowSet: 'Chop',
+
+    timeout: {
+      icon: '📋',
+      text: "Coach draws up a clean play in the huddle. The gym is loud. You walk back on the court calm — you know exactly what's coming.",
       choices: [
-        { label: 'Hockey stop — brake hard NOW', next: 'hockey_stop', points: 8 },
-        { label: 'Find the rhythm — trust your technique', next: 'find_rhythm', points: 12 }
+        { label: 'A', text: 'Run the pick-and-roll with your big man', next: 'pick_roll', clock: 14, conf: +10 },
+        { label: 'B', text: 'Iso your best scorer on the wing', next: 'iso', clock: 14, conf: +5 },
+        { label: 'C', text: 'Back-door cut for the easy layup', next: 'backdoor', clock: 14, conf: +15 },
       ]
     },
-    moguls: {
-      art: '💥🎿',
-      title: "Into the Bumps",
-      desc: "The moguls are massive — each one the size of a volkswagen. You absorb the first three like a pro. Then you catch an edge on the fourth one. You go airborne — not by choice. You can tuck and try to land clean, or try to flail and self-arrest before the impact.",
-      speedSet: 'Fast', confSet: 'Nervous', snowSet: 'Groomed',
+
+    halfcourt: {
+      icon: '🧠',
+      text: "You work the ball around the perimeter. :15 on the clock. Defense is locked in. You need to create something.",
       choices: [
-        { label: 'Tuck and stick the landing', next: 'mogul_land', points: 15 },
-        { label: 'Try to bail out mid-air', next: 'mogul_bail', points: 0 }
+        { label: 'A', text: 'Drive left — your stronger hand', next: 'drive_left', clock: 10, conf: +5 },
+        { label: 'B', text: 'Step back three — fade away from the defender', next: 'stepback_three', clock: 8, conf: -5 },
+        { label: 'C', text: 'Post up and work for the two', next: 'post_up', clock: 9, conf: 0 },
       ]
     },
-    cat_track: {
-      art: '😌🏔️',
-      title: "Smooth Cat Track",
-      desc: "You glide along the cat track, soaking in the views. A couple of powder stashes are visible off the groomed path — fresh, untracked snow between some trees. Totally rideable if you're brave enough to hop off-piste.",
-      speedSet: 'Slow', confSet: 'Confident', snowSet: 'Groomed',
-      choices: [
-        { label: 'Charge into the powder stash!', next: 'powder_stash', points: 15 },
-        { label: 'Stay on the groomer all the way down', next: 'clean_finish', points: 8 }
-      ]
+
+    /* ── Terminal scenes ── */
+    finish_rim: {
+      icon: '🏆', terminal: true, win: true,
+      title: 'And One!',
+      desc: "You power through the contact, flip it off the glass, and it drops. The foul is called. You step to the line with :08 left, drain the free throw, and your team escapes with the win.",
+      bonus: 1
     },
-    hockey_stop: {
-      art: '😬❄️',
-      title: "Edge Wash",
-      desc: "You try to hockey stop but your edges wash out in the variable snow. You slide sideways for about 30 meters, losing a ski pole along the way. But you stop! No crash, just wounded pride and one missing pole. You retrieve it and compose yourself.",
-      speedSet: 'Slow', confSet: 'Shaken', snowSet: 'Chop',
-      choices: [
-        { label: 'Ski it out slowly — you\'ve got this', next: 'slow_finish', points: 6 },
-        { label: 'Drop into the off-piste gully — all or nothing', next: 'gully', points: 14 }
-      ]
+    kick_corner: {
+      icon: '🏆', terminal: true, win: true,
+      title: 'Corner Three — Good!',
+      desc: "You feed the corner at exactly the right moment. Your teammate catches, sets, fires — nothing but net. A three-point swing. Game over.",
+      bonus: 3
     },
-    find_rhythm: {
-      art: '🔥⛷️',
-      title: "In the Zone",
-      desc: "Something clicks. The trees open up just enough and you're flowing between them, absorbing terrain, making micro-adjustments that feel effortless. This is what skiing is about. You ride it all the way out — perfectly controlled — and burst into the open bowl below.",
-      speedSet: 'Fast', confSet: 'Locked In', snowSet: 'Powder',
-      choices: [
-        { label: 'Charge across the open bowl — maintain the energy!', next: 'open_bowl', points: 18 },
-        { label: 'Scout the exit carefully — you\'ve earned a safe finish', next: 'safe_exit', points: 12 }
-      ]
+    midrange_fast: {
+      icon: '😬', terminal: true, win: false,
+      title: 'Rim, Out.',
+      desc: "The pull-up looked clean but caught the back of the rim and bounced out. They grab the board and run out the clock. Good effort, tough result.",
+      bonus: 0
     },
-    mogul_land: {
-      art: '🏅⛷️',
-      title: "Stomped It!",
-      desc: "You tuck, absorb the impact, and stick the landing like you've done it a thousand times. The crowd at the lift line (there's always a crowd) gives a small cheer. Confidence sky-high. The rest of the mogul field parts like a zipper.",
-      speedSet: 'Fast', confSet: 'Elite', snowSet: 'Groomed',
-      choices: [
-        { label: 'Sprint to the finish for maximum style points', next: 'epic_finish', points: 20 },
-        { label: 'Lap it immediately — do it again!', next: 'epic_finish', points: 20 }
-      ]
+    pick_roll: {
+      icon: '🏆', terminal: true, win: true,
+      title: 'Perfect Execution',
+      desc: "The pick-and-roll unfolds exactly as drawn up. Your big slips the screen, catches the lob, and hammers it home. Tie game — and your team gets the stop in overtime.",
+      bonus: 2
     },
-    mogul_bail: {
-      art: '💀😅',
-      title: "Tomahawk",
-      desc: "Your attempt to bail mid-air results in a spectacular tumble — ski, pole, hat, and dignity scattered across the mogul field. You're completely fine. One ski released properly. But the GoPro footage is going to be... educational.",
-      speedSet: 'Slow', confSet: 'Humbled', snowSet: 'Groomed',
-      terminal: 'loss',
-      terminalMsg: "You survived! But that's one for the fail compilation. No shame — everyone's taken a mogul send-off at some point. Brush the snow off and go again. 😅",
-      points: 5
+    iso: {
+      icon: '😬', terminal: true, win: false,
+      title: 'Contested, Blocked',
+      desc: "Your scorer goes one-on-one, gets a little greedy with the dribble, and the defender times the block perfectly. It's not your night.",
+      bonus: 0
     },
-    powder_stash: {
-      art: '❄️🤩',
-      title: "First Tracks!",
-      desc: "You plunge into untracked snow and immediately you're floating — the skis surfing above the deep powder. Time slows down. Every turn is effortless, weightless bliss. You ride it all the way to the base, whooping the whole way.",
-      speedSet: 'Medium', confSet: 'Euphoric', snowSet: 'Powder',
-      terminal: 'win',
-      terminalMsg: "🏆 Perfect Powder Run! You found untracked snow and rode it flawlessly. This is why we ski. This is why we endure the cold and the crowds and the parking lot. For this exact moment.",
-      points: 30
+    backdoor: {
+      icon: '🏆', terminal: true, win: true,
+      title: 'Backdoor Bucket!',
+      desc: "The cutter reads the defense perfectly, slips behind the help, and catches the pass in stride for an easy layup. Textbook basketball.",
+      bonus: 2
     },
-    clean_finish: {
-      art: '😌✅',
-      title: "Clean and Comfortable",
-      desc: "You carve smooth turns all the way to the base, arriving with energy to spare and a smile on your face. Safe, controlled, satisfying.",
-      speedSet: 'Medium', confSet: 'Happy', snowSet: 'Groomed',
-      terminal: 'win',
-      terminalMsg: "✅ Solid clean run! You skied within your ability and had a great time doing it. Smart, controlled, fun. Now go lap it again with a little more edge pressure.",
-      points: 20
+    drive_left: {
+      icon: '🏆', terminal: true, win: true,
+      title: 'Tough Finish',
+      desc: "You attack left, absorb the contact, and scoop it over the rim with your off hand. It rattles around and drops. The gym erupts.",
+      bonus: 2
     },
-    slow_finish: {
-      art: '🐢⛷️',
-      title: "Controlled Descent",
-      desc: "You pick your way carefully through the rest of the black diamond, wedge-turning where needed without shame. Not your finest hour stylistically. But you finish the run, all body parts intact, and that's what matters.",
-      speedSet: 'Slow', confSet: 'Relieved', snowSet: 'Chop',
-      terminal: 'win',
-      terminalMsg: "🎿 Run Complete — The mountain doesn't care about style points. You made it down in one piece. That's skiing. Go have a hot chocolate and come back stronger.",
-      points: 12
+    stepback_three: {
+      icon: '😬', terminal: true, win: false,
+      title: 'Airball',
+      desc: "You take a step back on a tough three with a hand in your face. It sails wide left. You'll get them next time.",
+      bonus: 0
     },
-    gully: {
-      art: '🌊❄️',
-      title: "The Gully Drop",
-      desc: "You drop into the narrow gully and it turns into a natural half-pipe. You're bouncing wall to wall, completely out of control but somehow staying upright. At the bottom, the gully spits you into the open run — alive, screaming, and grinning.",
-      speedSet: 'Fast', confSet: 'Manic', snowSet: 'Chop',
-      terminal: 'win',
-      terminalMsg: "🏆 Wild Ride! You absolutely should not have done that and it was AWESOME. 10/10 would not recommend, would absolutely do again.",
-      points: 25
+    post_up: {
+      icon: '🏆', terminal: true, win: true,
+      title: 'Drop Step, Two',
+      desc: "You back your defender down, feel a gap on the left block, spin into a drop step, and lay it up off the glass. Tie game. Your defense holds in OT.",
+      bonus: 2
     },
-    open_bowl: {
-      art: '🏔️💨',
-      title: "Wide Open Bowl",
-      desc: "You explode into the open bowl and let it run — Mach chicken all the way to the ridge. Wind howling, vision blurring at the edges, the mountain spread out around you like the whole world belongs to you.",
-      speedSet: 'Mach', confSet: 'Invincible', snowSet: 'Powder',
-      terminal: 'win',
-      terminalMsg: "🏆 LEGENDARY RUN. Speed. Powder. Air. You hit the bowl at full send and owned every inch of it. This is the run you'll describe at every après-ski for the next ten years.",
-      points: 35
-    },
-    safe_exit: {
-      art: '🧠⛷️',
-      title: "Smart Skier",
-      desc: "You take a beat to read the exit terrain, spot a clean line off the bowl, and ride it out with precision. Disciplined skiing is good skiing. You arrive at the lift line with perfect form, every turn textbook clean.",
-      speedSet: 'Medium', confSet: 'Satisfied', snowSet: 'Powder',
-      terminal: 'win',
-      terminalMsg: "✅ Expert-level decision making! Speed when it's right, control when it matters. You've got the mindset of a great skier. Now go lap Corbett's.",
-      points: 22
-    },
-    epic_finish: {
-      art: '🏅🎉',
-      title: "Pro-Level Finish",
-      desc: "You charge the last 500 feet of vertical at full speed, linking perfect short-radius turns through the rest of the run, and arrive at the base in a spray of snow that ruins three strangers' après-ski photos. Worth it.",
-      speedSet: 'Fast', confSet: 'Elite', snowSet: 'Groomed',
-      terminal: 'win',
-      terminalMsg: "🏆 EPIC RUN! From top to bottom, you made every right call. Speed. Technique. Stomped landings. You're in the top 5% of skiers on this mountain today. You've earned those après-ski nachos.",
-      points: 40
-    }
   };
 
-  const MAX_STEPS = 4;
-  let stepCount = 0;
+  /* ── State ── */
+  let step = 0;
+  let score = 0;
+  let confidence = 50;
+  let clock = 30;
 
-  const elArt     = document.getElementById('scene-art');
-  const elTitle   = document.getElementById('scene-title');
-  const elDesc    = document.getElementById('scene-desc');
-  const elChoices = document.getElementById('choices');
-  const elOutcome = document.getElementById('outcome-box');
-  const elEndActs = document.getElementById('end-actions');
-  const elFinalSc = document.getElementById('final-score');
-  const elTrack   = document.getElementById('progress-track');
-  const elScore   = document.getElementById('stat-score');
-  const elSpeed   = document.getElementById('stat-speed');
-  const elConf    = document.getElementById('stat-conf');
-  const elSnow    = document.getElementById('stat-snow');
+  /* ── DOM refs ── */
+  const sceneIcon   = document.getElementById('scene-icon');
+  const sceneText   = document.getElementById('scene-text');
+  const choicesEl   = document.getElementById('choices');
+  const sceneCard   = document.getElementById('scene-card');
+  const outcomeBox  = document.getElementById('outcome-box');
+  const statScore   = document.getElementById('stat-score');
+  const statConf    = document.getElementById('stat-conf');
+  const statClock   = document.getElementById('stat-clock');
+  const statDiff    = document.getElementById('stat-diff');
 
-  function initTrack() {
-    elTrack.innerHTML = '';
-    for (let i = 0; i < MAX_STEPS; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'track-dot';
-      dot.id = 'dot-' + i;
-      elTrack.appendChild(dot);
+  function updateStatus() {
+    statScore.textContent = score + ' pts';
+    statConf.textContent  = Math.max(0, Math.min(100, confidence)) + '%';
+    statClock.textContent = ':' + String(clock).padStart(2, '0');
+  }
+
+  function updateDots(current) {
+    for (let i = 0; i < 5; i++) {
+      const dot = document.getElementById('dot-' + i);
+      dot.className = 'progress-dot';
+      if (i < current) dot.classList.add('done');
+      else if (i === current) dot.classList.add('active');
     }
   }
 
-  function updateStats(scene) {
-    if (scene.speedSet) elSpeed.textContent = scene.speedSet;
-    if (scene.confSet)  elConf.textContent  = scene.confSet;
-    if (scene.snowSet)  elSnow.textContent  = scene.snowSet;
-    const conf = elConf.textContent;
-    elConf.className = 'stat-value ' + (
-      ['Elite','Invincible','Euphoric','Locked In','Manic'].includes(conf) ? 'good' :
-      ['Shaken','Humbled','Nervous'].includes(conf) ? 'bad' : ''
-    );
-  }
-
-  function showScene(sceneId) {
-    const scene = scenes[sceneId];
+  function renderScene(key) {
+    const scene = SCENES[key];
     if (!scene) return;
 
-    if (stepCount < MAX_STEPS) {
-      const prevDot = document.getElementById('dot-' + (stepCount - 1));
-      if (prevDot && !prevDot.className.includes('end')) prevDot.className = 'track-dot done';
-      const currDot = document.getElementById('dot-' + stepCount);
-      if (currDot) currDot.className = 'track-dot curr';
-    }
-
-    state.score += scene.points || 0;
-    state.sceneIndex++;
-    stepCount++;
-    updateStats(scene);
-    elScore.textContent = state.score;
-
-    elOutcome.style.display = 'none';
-    elOutcome.className = 'outcome-box';
-    elEndActs.style.display = 'none';
-
-    elArt.textContent   = scene.art || '⛷️';
-    elTitle.textContent = scene.title;
-    elDesc.textContent  = scene.desc;
-
     if (scene.terminal) {
-      elChoices.innerHTML = '';
-      elOutcome.style.display = 'block';
-      elOutcome.className = 'outcome-box ' + (scene.terminal === 'win' ? 'win' : 'loss');
-      elOutcome.textContent = scene.terminalMsg;
-
-      const finalDot = document.getElementById('dot-' + (stepCount - 1));
-      if (finalDot) finalDot.className = 'track-dot ' + (scene.terminal === 'win' ? 'good-end' : 'bad-end');
-
-      const rank = state.score >= 35 ? '🏆 Legend' :
-                   state.score >= 22 ? '🥇 Expert' :
-                   state.score >= 14 ? '🥈 Solid Skier' : '🥉 Getting There';
-
-      elFinalSc.innerHTML = `Final Score: <strong>${state.score} pts</strong> &nbsp;·&nbsp; ${rank}`;
-      elEndActs.style.display = 'flex';
+      showOutcome(scene);
       return;
     }
 
-    elChoices.innerHTML = '';
-    (scene.choices || []).forEach((c, i) => {
+    sceneIcon.textContent = scene.icon;
+    sceneText.textContent = scene.text;
+    choicesEl.innerHTML = '';
+
+    scene.choices.forEach(ch => {
       const btn = document.createElement('button');
       btn.className = 'choice-btn';
-      btn.innerHTML = `<span class="choice-label">${String.fromCharCode(65 + i)}</span>${c.label}`;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
-        setTimeout(() => showScene(c.next), 150);
-      });
-      elChoices.appendChild(btn);
+      btn.innerHTML = `<span class="choice-label">${ch.label}</span>${ch.text}`;
+      btn.onclick = () => choose(ch);
+      choicesEl.appendChild(btn);
     });
+
+    updateDots(step);
   }
 
-  function restartGame() {
-    state.score = 0;
-    state.sceneIndex = 0;
-    stepCount = 0;
-    elScore.textContent = '0';
-    elSpeed.textContent = '—';
-    elConf.textContent  = '—';
-    elSnow.textContent  = '—';
-    elSpeed.className = elConf.className = elSnow.className = 'stat-value';
-    initTrack();
-    showScene('start');
+  function choose(ch) {
+    if (ch.score)  score += ch.score;
+    if (ch.conf)   confidence += ch.conf;
+    if (ch.clock)  clock = ch.clock;
+    step++;
+    updateStatus();
+    renderScene(ch.next);
   }
 
-  document.getElementById('restart-btn').addEventListener('click', restartGame);
-  initTrack();
-  showScene('start');
+  function showOutcome(scene) {
+    sceneCard.style.display = 'none';
+    outcomeBox.style.display = 'block';
+    outcomeBox.className = scene.win ? 'win' : 'loss';
+
+    if (scene.bonus) score += scene.bonus;
+    updateDots(5);
+
+    document.getElementById('outcome-icon').textContent  = scene.icon;
+    document.getElementById('outcome-title').textContent = scene.title;
+    document.getElementById('outcome-desc').textContent  = scene.desc;
+    document.getElementById('final-score').innerHTML =
+      'Final score: <span>' + score + ' pts</span> &nbsp;·&nbsp; Confidence: <span>' + Math.max(0, Math.min(100, confidence)) + '%</span>';
+    updateStatus();
+  }
+
+  function startGame() {
+    step       = 0;
+    score      = 0;
+    confidence = 50;
+    clock      = 30;
+    updateStatus();
+    updateDots(0);
+    sceneCard.style.display   = 'block';
+    outcomeBox.style.display  = 'none';
+    outcomeBox.className      = '';
+    statDiff.textContent      = 'Down 2';
+    renderScene('start');
+  }
+
+  /* ── Boot ── */
+  startGame();
 </script>
-
 </body>
 </html>
