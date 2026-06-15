@@ -1,5 +1,5 @@
 /* =====================================================
-   scratch.css — Custom stylesheet for the Ski Passion page
+   scratch.css — Custom stylesheet for the Basketball page
    (From scratch — no Bootstrap)
    ===================================================== */
 
@@ -12,20 +12,20 @@
 
 /* ---- 2. Body: background, font family, font color ---- */
 body {
-  background-color: #0a1628;
+  background-color: #0f0a05;
   background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(44, 95, 158, 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(28, 60, 100, 0.20) 0%, transparent 60%);
+    radial-gradient(ellipse at 20% 0%, rgba(150, 70, 10, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(100, 45, 5, 0.14) 0%, transparent 60%);
   font-family: 'Segoe UI', Roboto, 'Open Sans', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.7;
-  color: #d8e8f5;
+  color: #e0d8d0;
 }
 
 /* ---- 3. Navigation bar ---- */
 #top-nav {
-  background-color: rgba(10, 22, 40, 0.95);
-  border-bottom: 1px solid #1e3a5f;
+  background-color: rgba(15, 10, 5, 0.95);
+  border-bottom: 1px solid #3a1e0a;
   padding: 0 32px;
   display: flex;
   align-items: center;
@@ -52,7 +52,7 @@ body {
 }
 
 #top-nav ul li a {
-  color: #8ab4d6;
+  color: #c09060;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -66,10 +66,10 @@ body {
 
 /* ---- 4. Hero div ---- */
 #hero {
-  background-image: linear-gradient(rgba(10, 22, 40, 0.6), rgba(10, 22, 40, 0.85)),
-                    url('https://images.unsplash.com/photo-1542041702-dfe23de4bf1f?w=1600&auto=format&fit=crop');
+  background-image: linear-gradient(rgba(15, 10, 5, 0.58), rgba(15, 10, 5, 0.82)),
+                    url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1600&auto=format&fit=crop');
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   background-repeat: no-repeat;
   min-height: 88vh;
   display: flex;
@@ -93,14 +93,14 @@ body {
 
 #hero p {
   font-size: 1.2rem;
-  color: #b8d4ea;
+  color: #c8b898;
   max-width: 600px;
   margin-bottom: 30px;
 }
 
 #hero .hero-btn {
   display: inline-block;
-  background-color: #2c5f9e;
+  background-color: #c85a00;
   color: #ffffff;
   text-decoration: none;
   padding: 12px 32px;
@@ -112,12 +112,12 @@ body {
 }
 
 #hero .hero-btn:hover {
-  background-color: #1a4a7a;
+  background-color: #9a3a00;
 }
 
 /* ---- 5. Page-anchor scroll indicator ---- */
 #scroll-hint {
-  color: #5a8cbf;
+  color: #806040;
   font-size: 0.85rem;
   margin-top: 16px;
   letter-spacing: 0.05em;
@@ -135,8 +135,8 @@ body {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 1.9rem;
   font-weight: 700;
-  color: #7eb8e0;
-  border-left: 4px solid #2c5f9e;
+  color: #e09050;
+  border-left: 4px solid #c85a00;
   padding-left: 16px;
   margin-bottom: 20px;
   margin-top: 60px;
@@ -145,33 +145,33 @@ body {
 /* ---- 8. Paragraphs ---- */
 p {
   margin-bottom: 16px;
-  color: #c8dced;
+  color: #ccc0b0;
 }
 
-/* ---- 9. Resort list section div ---- */
+/* ---- 9. Favorites list section div ---- */
 #resort-lists {
-  background-color: rgba(20, 40, 70, 0.5);
-  border: 1px solid #1e3a5f;
+  background-color: rgba(30, 15, 5, 0.5);
+  border: 1px solid #3a1e0a;
   border-radius: 8px;
   padding: 28px 32px;
   margin-top: 24px;
 }
 
-/* Ordered list (top resorts) */
+/* Ordered list (top teams) */
 #resort-lists ol {
   padding-left: 1.4em;
-  color: #d8e8f5;
+  color: #e0d8d0;
 }
 
 #resort-lists ol > li {
   font-weight: 600;
   font-size: 1.05rem;
-  color: #90c4e8;
+  color: #e09050;
   margin-bottom: 14px;
   line-height: 1.4;
 }
 
-/* Nested unordered list (best runs at each resort) */
+/* Nested unordered list (players at each team) */
 #resort-lists ol > li > ul {
   list-style: disc;
   padding-left: 1.4em;
@@ -181,7 +181,7 @@ p {
 #resort-lists ol > li > ul li {
   font-weight: 400;
   font-size: 0.92rem;
-  color: #a8c8e0;
+  color: #c0a880;
   margin-bottom: 3px;
 }
 
@@ -198,7 +198,7 @@ p {
 .image-caption {
   text-align: center;
   font-size: 0.85rem;
-  color: #5a8cbf;
+  color: #806040;
   margin-top: -16px;
   margin-bottom: 20px;
   font-style: italic;
@@ -228,7 +228,7 @@ p {
   border: 0;
 }
 
-/* ---- 12. Gear list styling ---- */
+/* ---- 12. Gear grid styling ---- */
 .gear-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -237,14 +237,14 @@ p {
 }
 
 .gear-card {
-  background-color: rgba(20, 40, 70, 0.5);
-  border: 1px solid #1e3a5f;
+  background-color: rgba(30, 15, 5, 0.5);
+  border: 1px solid #3a1e0a;
   border-radius: 8px;
   padding: 20px;
 }
 
 .gear-card h4 {
-  color: #7eb8e0;
+  color: #e09050;
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -253,22 +253,22 @@ p {
 
 .gear-card p {
   font-size: 0.88rem;
-  color: #a0bcd4;
+  color: #a09080;
   margin-bottom: 0;
 }
 
 /* ---- 13. Tableau container div ---- */
 #tableau-section {
   margin-top: 24px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.04);
   border-radius: 8px;
   padding: 20px;
-  border: 1px solid #1e3a5f;
+  border: 1px solid #3a1e0a;
 }
 
 #tableau-section p.viz-note {
   font-size: 0.88rem;
-  color: #5a8cbf;
+  color: #806040;
   text-align: center;
   margin-top: 12px;
 }
@@ -278,7 +278,7 @@ p {
   text-align: center;
   margin-top: 60px;
   padding-top: 30px;
-  border-top: 1px solid #1e3a5f;
+  border-top: 1px solid #3a1e0a;
 }
 
 .page-links a {
@@ -294,32 +294,32 @@ p {
 }
 
 .page-links .btn-primary-link {
-  background-color: #2c5f9e;
+  background-color: #c85a00;
   color: #ffffff;
 }
 
 .page-links .btn-primary-link:hover {
-  background-color: #1a4a7a;
+  background-color: #9a3a00;
 }
 
 .page-links .btn-secondary-link {
   background-color: transparent;
-  color: #7eb8e0;
-  border: 1px solid #2c5f9e;
+  color: #e09050;
+  border: 1px solid #c85a00;
 }
 
 .page-links .btn-secondary-link:hover {
-  background-color: rgba(44, 95, 158, 0.2);
+  background-color: rgba(200, 90, 0, 0.2);
 }
 
 /* ---- 15. Footer ---- */
 #scratch-footer {
-  background-color: rgba(5, 12, 24, 0.9);
-  border-top: 1px solid #1e3a5f;
+  background-color: rgba(5, 3, 1, 0.9);
+  border-top: 1px solid #3a1e0a;
   text-align: center;
   padding: 28px 16px;
   font-size: 0.85rem;
-  color: #4a6a84;
+  color: #604030;
   font-family: 'Georgia', 'Times New Roman', serif;
 }
 
